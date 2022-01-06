@@ -5,7 +5,7 @@ const express = require('express');
 const http = require('http');
 const configurePassport = require('../passport');
 const userTypedefs = require('./types_resolvers/users/typeDefs.js');
-const userResolvers = require('./types_resolvers/users/resolvers.js');
+const resolvers = require('./types_resolvers/index.js');
 
 async function startApolloServer(typeDefs, resolvers) {
   const app = express();
@@ -57,6 +57,6 @@ async function startApolloServer(typeDefs, resolvers) {
 }
 
 
-startApolloServer([userTypedefs], [userResolvers])
+startApolloServer([userTypedefs], resolvers)
 
 module.exports = startApolloServer;
